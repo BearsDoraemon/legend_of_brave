@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://script/world.gd" id="1_ys4bs"]
 [ext_resource type="Texture2D" uid="uid://e43pklk0y6qq" path="res://assets/legacy_fantasy/trees/Tree-Assets.png" id="2_hhefb"]
-[ext_resource type="PackedScene" uid="uid://hjkpavhmbvku" path="res://player.tscn" id="2_xqptf"]
+[ext_resource type="PackedScene" uid="uid://hjkpavhmbvku" path="res://scene/player.tscn" id="2_xqptf"]
 [ext_resource type="Texture2D" uid="uid://goixnla7f27q" path="res://assets/legacy_fantasy/background/Background.png" id="4_q2qw4"]
 [ext_resource type="Texture2D" uid="uid://bcj8she5ur334" path="res://assets/legacy_fantasy/trees/Background.png" id="5_yrkkp"]
 
