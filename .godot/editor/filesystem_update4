@@ -1,3 +1,4 @@
 res://scene/player.tscn
-res://script/player.gd
 res://scene/world.tscn
+res://script/player.gd
+res://classes/StateMachine.gd

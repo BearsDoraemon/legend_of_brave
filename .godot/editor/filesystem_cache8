@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1703753781
+::res://::1703772115
 icon.svg::CompressedTexture2D::7649488589435903535::1697191449::1697191453::1::::<><>::
 ::res://assets/::1701075072
 ::res://assets/generic_char/::1703687890
@@ -13,9 +13,9 @@ Background.png::CompressedTexture2D::2547413951040444877::1701075512::1701075512
 Tree-Assets.png::CompressedTexture2D::342349734840989820::1697188942::1701075103::1::::<><>::
 ::res://classes/::1703568743
 StateMachine.gd::GDScript::-1::1703568743::0::1::::StateMachine<>Node<>::
-::res://scene/::1703695800
-player.tscn::PackedScene::510535294864043428::1703695800::0::1::::<><>::res://script/player.gd<>uid://c8wxq33c8kfk::::res://assets/generic_char/char_blue_1.png<>uid://dq6o758b1oum8::::res://assets/generic_char/char_blue_2.png<>res://classes/StateMachine.gd
-world.tscn::PackedScene::3062055026387226552::1703695800::0::1::::<><>::res://script/world.gd<>uid://e43pklk0y6qq::::res://assets/legacy_fantasy/trees/Tree-Assets.png<>uid://hjkpavhmbvku::::res://scene/player.tscn<>uid://goixnla7f27q::::res://assets/legacy_fantasy/background/Background.png<>uid://bcj8she5ur334::::res://assets/legacy_fantasy/trees/Background.png
-::res://script/::1703690965
-player.gd::GDScript::-1::1703690965::0::1::::<>CharacterBody2D<>::
+::res://scene/::1703757185
+player.tscn::PackedScene::510535294864043428::1703757185::0::1::::<><>::res://script/player.gd<>uid://c8wxq33c8kfk::::res://assets/generic_char/char_blue_1.png<>uid://dq6o758b1oum8::::res://assets/generic_char/char_blue_2.png<>res://classes/StateMachine.gd
+world.tscn::PackedScene::3062055026387226552::1703755809::0::1::::<><>::res://script/world.gd<>uid://e43pklk0y6qq::::res://assets/legacy_fantasy/trees/Tree-Assets.png<>uid://hjkpavhmbvku::::res://scene/player.tscn<>uid://goixnla7f27q::::res://assets/legacy_fantasy/background/Background.png<>uid://bcj8she5ur334::::res://assets/legacy_fantasy/trees/Background.png
+::res://script/::1703755809
+player.gd::GDScript::-1::1703755809::0::1::::<>CharacterBody2D<>::
 world.gd::GDScript::-1::1701074082::0::1::::<>Node2D<>::

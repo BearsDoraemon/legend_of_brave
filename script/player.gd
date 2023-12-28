@@ -12,13 +12,14 @@ enum State{
 
 const GROUND_STATES := [State.IDLE, State.RUNNING]
 const JUMP_VELOCITY = -320.0
-const WALL_JUMP_VELOCITY = Vector2(1000, -320)
+const WALL_JUMP_VELOCITY = Vector2(380, -280)
 const RUN_SPEED = 160.0
 const FLOOR_ACCELERATION = RUN_SPEED / 0.2
-const AIR_ACCELERATION = RUN_SPEED / 0.02
+const AIR_ACCELERATION = RUN_SPEED / 0.1
 var is_first_tick = false
 var default_gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+@onready var state_machine: Node = $StateMachine
 @onready var foot_checker: RayCast2D = $Graphics/FootChecker
 @onready var head_checker: RayCast2D = $Graphics/HeadChecker
 @onready var graphics: Node2D = $Graphics
@@ -36,6 +37,24 @@ func _unhandled_input(event: InputEvent) -> void:
 			velocity.y = JUMP_VELOCITY / 2
 
 
+func stand(gravity: float,delta: float) -> void:
+	var acceleration = FLOOR_ACCELERATION if is_on_floor() else AIR_ACCELERATION
+	velocity.x = move_toward(velocity.x, 0.0, acceleration * delta)
+	velocity.y += gravity * delta
+	move_and_slide()
+
+
+func move(gravity, delta: float) -> void:
+	var direction = Input.get_axis("move_left", "move_right")
+	var acceleration = FLOOR_ACCELERATION if is_on_floor() else AIR_ACCELERATION
+	velocity.x = move_toward(velocity.x, direction * RUN_SPEED, acceleration * delta)
+	velocity.y += gravity * delta
+	move_and_slide()
+	
+	if not is_zero_approx(direction	):
+		graphics.scale.x = 1 if direction > 0 else -1
+
+
 func tick_physics(state: State, delta: float) -> void:
 	match state:
 		State.IDLE:
@@ -51,34 +70,24 @@ func tick_physics(state: State, delta: float) -> void:
 			move(default_gravity, delta)
 		
 		State.LANDING:
-			stand(delta)
+			stand(default_gravity, delta)
 			
 		State.WALL_SLIDING:
 			move(default_gravity / 6.0, delta)
 		
 		State.WALL_JUMP:
-			move(0 if is_first_tick else default_gravity, delta)
+			if state_machine.state_timer < 0.1:
+				stand(0 if is_first_tick else default_gravity, delta)
+				velocity.x *= get_wall_normal().x
+			else:
+				move(default_gravity, delta)
 	
 	is_first_tick = false
 
 
-func stand(delta: float) -> void:
-	var acceleration = FLOOR_ACCELERATION if is_on_floor() else AIR_ACCELERATION
-	velocity.x = move_toward(velocity.x, 0.0, acceleration * delta)
-	velocity.y += default_gravity * delta
-	move_and_slide()
+func can_wall_slide() -> bool:
+	return is_on_wall() and foot_checker.is_colliding() and head_checker.is_colliding()
 
-
-func move(gravity, delta: float) -> void:
-	var direction = Input.get_axis("move_left", "move_right")
-	var acceleration = FLOOR_ACCELERATION if is_on_floor() else AIR_ACCELERATION
-	velocity.x = move_toward(velocity.x, direction * RUN_SPEED, acceleration * delta)
-	move_and_slide()
-	velocity.y += gravity * delta
-	
-	if not is_zero_approx(direction	):
-		graphics.scale.x = -1 if direction < 0 else 1
-		
 
 func get_next_state(state: State) -> State:
 	var can_jump = is_on_floor() or not coyote_timer.is_stopped()
@@ -108,7 +117,7 @@ func get_next_state(state: State) -> State:
 		State.FALL:
 			if is_on_floor():
 				return State.LANDING if is_still else State.RUNNING
-			if is_on_wall() and foot_checker.is_colliding() and head_checker.is_colliding():
+			if can_wall_slide():
 				return State.WALL_SLIDING
 		
 		State.LANDING:
@@ -126,6 +135,8 @@ func get_next_state(state: State) -> State:
 				return State.FALL
 		
 		State.WALL_JUMP:
+			if can_wall_slide() and not is_first_tick:
+				return State.WALL_SLIDING
 			if velocity.y >= 0:
 				return State.FALL
 				

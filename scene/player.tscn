@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://classes/StateMachine.gd" id="3_k1yls"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5puy"]
-size = Vector2(10, 29)
+size = Vector2(10, 29.5)
 
 [sub_resource type="Animation" id="Animation_f0uty"]
 length = 0.001
@@ -578,7 +578,7 @@ position = Vector2(-1, -25)
 target_position = Vector2(10, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -14.5)
+position = Vector2(0, -14.75)
 shape = SubResource("RectangleShape2D_e5puy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
