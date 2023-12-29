@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjvjumlwxfr73"]
+[gd_scene load_steps=9 format=3 uid="uid://bjvjumlwxfr73"]
 
 [ext_resource type="Script" path="res://script/world.gd" id="1_ys4bs"]
 [ext_resource type="Texture2D" uid="uid://e43pklk0y6qq" path="res://assets/legacy_fantasy/trees/Tree-Assets.png" id="2_hhefb"]
 [ext_resource type="PackedScene" uid="uid://hjkpavhmbvku" path="res://scene/player.tscn" id="2_xqptf"]
+[ext_resource type="PackedScene" uid="uid://dc5ne48qnkshj" path="res://enemies/boar.tscn" id="3_ukdr5"]
 [ext_resource type="Texture2D" uid="uid://goixnla7f27q" path="res://assets/legacy_fantasy/background/Background.png" id="4_q2qw4"]
 [ext_resource type="Texture2D" uid="uid://bcj8she5ur334" path="res://assets/legacy_fantasy/trees/Background.png" id="5_yrkkp"]
 
@@ -496,6 +497,9 @@ layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(-131064, 655360, 2, -131061, 458752, 3, 524310, 524288, 2, -131042, 524288, 2, 655391, 589824, 2, 655392, 589824, 3, 655393, 393216, 3, -65502, 458752, 3, 655398, 524288, 3, 524334, 655360, 2, 720953, 524288, 2, -131070, 458752, 3, -131068, 524288, 3, 655364, 524288, 2, -131065, 524288, 2, -131062, 524288, 3, 655371, 393216, 3, 655373, 524288, 2, 655375, 655360, 2, 655378, 524288, 2, -131053, 589824, 3, -131051, 524288, 3, 524309, 589824, 3, -131047, 655360, 2, 327707, 393216, 3, -131043, 589824, 3, -65503, 393216, 3, 131109, 589824, 3, 655397, 589824, 2, 131112, 589824, 2, 524329, 393216, 3, 524333, 589824, 3, 524338, 524288, 2, 655414, 458752, 3, 720952, 458752, 3, 65584, 589824, 3, 65582, 524288, 2)
+
+[node name="Boar" parent="." instance=ExtResource("3_ukdr5")]
+position = Vector2(719, 116)
 
 [node name="Player" parent="." instance=ExtResource("2_xqptf")]
 position = Vector2(163, 127)

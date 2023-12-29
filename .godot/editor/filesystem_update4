@@ -1,3 +1,6 @@
+res://scene/player.tscn
+res://scene/world.tscn
 res://enemies/enemy.tscn
-res://enemies/enemy.gd
 res://enemies/boar.tscn
+res://enemies/boar.gd
+res://enemies/enemy.gd

@@ -9,6 +9,8 @@ enum Direction{
 @export var direction = Direction.LEFT:
 	set(v):
 		direction = v
+		if not is_node_ready():
+			await ready
 		graphics.scale.x = -direction
 @export var max_speed: float = 180.0
 @export var acceleration: float = 2000.0
@@ -18,3 +20,8 @@ var default_gravity: int = ProjectSettings.get_setting("physics/2d/default_gravi
 @onready var graphics: Node2D = $Graphics
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var state_machine: Node = $StateMachine
+
+func move(speed: float, delta: float) -> void:
+	velocity.x = move_toward(velocity.x, speed * direction, acceleration * delta)
+	velocity.y += default_gravity * delta
+	move_and_slide()
