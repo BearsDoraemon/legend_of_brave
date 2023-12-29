@@ -1,4 +1,3 @@
-res://scene/player.tscn
-res://scene/world.tscn
-res://script/player.gd
-res://classes/StateMachine.gd
+res://enemies/enemy.tscn
+res://enemies/enemy.gd
+res://enemies/boar.tscn
