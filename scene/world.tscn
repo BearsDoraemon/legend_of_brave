@@ -503,6 +503,7 @@ position = Vector2(719, 116)
 
 [node name="Player" parent="." instance=ExtResource("2_xqptf")]
 position = Vector2(163, 127)
+can_combo = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1, -14)
